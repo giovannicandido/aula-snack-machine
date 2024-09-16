@@ -1,0 +1,14 @@
+[
+  {
+    "codigo": 10,
+    "nome": "Salgadinho Ruffles",
+    "preco": 2.76,
+    "quantidade": 4
+  },
+  {
+    "codigo": 20,
+    "nome": "Snack de maçã",
+    "preco": 1.30,
+    "quantidade": 6
+  }
+]
