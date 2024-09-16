@@ -1,4 +1,4 @@
-package br.com.targettrust;
+package br.com.targettrust.model;
 
 import java.math.BigDecimal;
 

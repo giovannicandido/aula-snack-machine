@@ -1,5 +1,9 @@
 package br.com.targettrust;
 
+import br.com.targettrust.model.Produto;
+import br.com.targettrust.repository.ProdutoRepository;
+import br.com.targettrust.repository.ProdutoRepositoryImpl;
+
 import java.util.List;
 
 public class Main {

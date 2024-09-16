@@ -1,11 +1,11 @@
-package br.com.targettrust;
+package br.com.targettrust.repository;
 
+import br.com.targettrust.model.Produto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoRepositoryImpl implements ProdutoRepository {

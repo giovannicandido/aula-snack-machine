@@ -1,4 +1,6 @@
-package br.com.targettrust;
+package br.com.targettrust.repository;
+
+import br.com.targettrust.model.Produto;
 
 import java.util.List;
 
