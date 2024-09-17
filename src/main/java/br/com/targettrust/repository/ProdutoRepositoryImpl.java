@@ -6,7 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class ProdutoRepositoryImpl implements ProdutoRepository {
     public static final String BANCO_JSON = "banco.json";
@@ -27,8 +29,34 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
 
     }
 
+    @Override
+    public void save(Produto produto) {
+        List<Produto> produtos = findAll();
+        produtos.remove(produto);
+        produtos.add(produto);
+        sort(produtos);
+        writeDatabase(produtos);
+    }
+
+    private void sort(List<Produto> produtos) {
+        Collections.sort(produtos);
+    }
+
+    private void writeDatabase(List<Produto> produtos) {
+        String databasePath = findDatabasePath();
+        File banco = new File(databasePath);
+        try {
+            BancoDados bancoDados = new BancoDados();
+            bancoDados.setProdutos(produtos);
+            objectMapper.writeValue(banco, bancoDados);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * Get the database json file path from user directory
+     *
      * @return The file path
      */
     private String findDatabasePath() {

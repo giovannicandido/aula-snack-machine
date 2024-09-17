@@ -4,6 +4,7 @@ import br.com.targettrust.model.Produto;
 import br.com.targettrust.repository.ProdutoRepository;
 import br.com.targettrust.repository.ProdutoRepositoryImpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Main {
@@ -12,6 +13,15 @@ public class Main {
 
         ProdutoRepository produtoRepository = new ProdutoRepositoryImpl();
         List<Produto> produtos = produtoRepository.findAll();
+        System.out.println(produtos);
+
+        Produto produto = new Produto();
+        produto.setCodigo(30);
+        produto.setNome("Novo produto");
+        produto.setPreco(new BigDecimal("20.45"));
+        produtoRepository.save(produto);
+
+        produtos = produtoRepository.findAll();
         System.out.println(produtos);
 
     }

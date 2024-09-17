@@ -1,8 +1,9 @@
 package br.com.targettrust.model;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
-public class Produto {
+public class Produto implements Comparable<Produto>{
     private Integer codigo;
     private String nome;
     private BigDecimal preco;
@@ -48,5 +49,27 @@ public class Produto {
                 ", preco=" + preco +
                 ", quantidade=" + quantidade +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Produto produto = (Produto) o;
+        return Objects.equals(codigo, produto.codigo);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(codigo);
+    }
+
+    @Override
+    public int compareTo(Produto o) {
+        if(nome == null || o.nome == null) {
+          return -1;
+        }
+
+        return nome.compareTo(o.nome);
     }
 }
