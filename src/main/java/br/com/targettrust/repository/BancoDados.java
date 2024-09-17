@@ -6,6 +6,7 @@ import java.util.List;
 
 public class BancoDados {
     private List<Produto> produtos;
+    // A lista de vendas pode ficar aqui
 
     public List<Produto> getProdutos() {
         return produtos;

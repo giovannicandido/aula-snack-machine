@@ -1,6 +1,8 @@
 package br.com.targettrust.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Produto implements Comparable<Produto>{

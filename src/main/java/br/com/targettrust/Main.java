@@ -24,5 +24,18 @@ public class Main {
         produtos = produtoRepository.findAll();
         System.out.println(produtos);
 
+        // Cliente escolhe 10
+
+        Produto procurado = new Produto();
+        procurado.setCodigo(10);
+
+        int index = produtos.indexOf(produto);
+
+//        if(index > -1){
+//            produtos.get(index);
+//            produtos.remove(index);
+//            produtos.set(index, novoProduto);
+//        }
+
     }
 }
