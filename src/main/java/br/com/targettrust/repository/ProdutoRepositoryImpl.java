@@ -1,29 +1,22 @@
 package br.com.targettrust.repository;
 
+import br.com.targettrust.config.ObjectMapperConfig;
 import br.com.targettrust.model.Produto;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.util.StdDateFormat;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class ProdutoRepositoryImpl implements ProdutoRepository {
     public static final String BANCO_JSON = "banco.json";
     public static final String USER_DIR = "user.home";
-    // We probably need to configure the mapper in all places
     private ObjectMapper objectMapper;
 
     public ProdutoRepositoryImpl() {
-        objectMapper = new ObjectMapper();
-        objectMapper.findAndRegisterModules();
-        objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        objectMapper.setDateFormat(new StdDateFormat().withColonInTimeZone(true));
+       objectMapper = ObjectMapperConfig.getInstance();
     }
 
     @Override
