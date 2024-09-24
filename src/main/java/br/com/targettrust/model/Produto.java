@@ -55,12 +55,18 @@ public class Produto implements Comparable<Produto>{
 
     @Override
     public boolean equals(Object o) {
+        // se os objetos estão na mesma posição de memoria
         if (this == o) return true;
+        // Verifica se é mesma classe
         if (o == null || getClass() != o.getClass()) return false;
+        // so converte para comparar
         Produto produto = (Produto) o;
+        // a comparacao valida é aqui
         return Objects.equals(codigo, produto.codigo);
     }
 
+
+    // Se o equals for igual o hashcode tem que gerar o mesmo numero
     @Override
     public int hashCode() {
         return Objects.hashCode(codigo);
@@ -72,6 +78,6 @@ public class Produto implements Comparable<Produto>{
           return -1;
         }
 
-        return nome.compareTo(o.nome);
+        return nome.toLowerCase().compareTo(o.nome.toLowerCase());
     }
 }

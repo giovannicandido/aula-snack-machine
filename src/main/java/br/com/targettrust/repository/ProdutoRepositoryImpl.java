@@ -41,6 +41,12 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
         writeDatabase(produtos);
     }
 
+    @Override
+    public void saveAll(List<Produto> produtos) {
+        sort(produtos);
+        writeDatabase(produtos);
+    }
+
     private void sort(List<Produto> produtos) {
         Collections.sort(produtos);
     }

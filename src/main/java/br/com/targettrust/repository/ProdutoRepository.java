@@ -17,4 +17,6 @@ public interface ProdutoRepository {
      * @param produto
      */
     void save(Produto produto);
+
+    void saveAll(List<Produto> produtos);
 }
