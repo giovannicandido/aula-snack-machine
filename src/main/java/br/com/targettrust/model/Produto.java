@@ -1,8 +1,8 @@
 package br.com.targettrust.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Produto implements Comparable<Produto>{
@@ -10,6 +10,16 @@ public class Produto implements Comparable<Produto>{
     private String nome;
     private BigDecimal preco;
     private Integer quantidade;
+
+    public Produto() {
+    }
+
+    public Produto(Integer codigo, String nome, BigDecimal preco, Integer quantidade) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+    }
 
     public Integer getCodigo() {
         return codigo;

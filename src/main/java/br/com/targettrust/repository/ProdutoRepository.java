@@ -18,5 +18,9 @@ public interface ProdutoRepository {
      */
     void save(Produto produto);
 
+    /**
+     * Save all overrides the produtos in database with the list
+     * @param produtos List of products
+     */
     void saveAll(List<Produto> produtos);
 }
