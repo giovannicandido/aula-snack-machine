@@ -34,7 +34,7 @@ public class ManutecaoController {
         imprimirArquivoDeImportacao();
         // não são todos os produtos
         imprimirPlano();
-        calcularEImportarProdutos();
+        calcularEImportarProdutos2();
         imprimirResultado();
     }
 
@@ -72,6 +72,25 @@ public class ManutecaoController {
         produtoRepository.saveAll(produtos);
 
 
+    }
+
+    private void calcularEImportarProdutos2() {
+        List<Produto> produtosDisponiveis = new ArrayList<>(this.produtosDisponiveis);
+        produtosAImportar.forEach(produtoImportar -> {
+            Optional<Produto> produtoBanco = produtosDisponiveis.stream()
+                    .filter(p -> p.getCodigo().equals(produtoImportar.getCodigo()))
+                    .findFirst();
+
+            produtoBanco.ifPresentOrElse(pbanco -> {
+                produtoImportar.setQuantidade(pbanco.getQuantidade() + produtoImportar.getQuantidade());
+                produtosDisponiveis.remove(pbanco);
+                produtosDisponiveis.add(produtoImportar);
+            }, () -> {
+                produtosDisponiveis.add(produtoImportar);
+            });
+        });
+
+        produtoRepository.saveAll(produtosDisponiveis);
     }
 
     private void imprimirPlano() {
